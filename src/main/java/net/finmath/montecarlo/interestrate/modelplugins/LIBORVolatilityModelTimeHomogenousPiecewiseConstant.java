@@ -5,6 +5,8 @@
  */
 package net.finmath.montecarlo.interestrate.modelplugins;
 
+import java.util.Arrays;
+import java.util.Objects;
 import net.finmath.montecarlo.RandomVariable;
 import net.finmath.stochastic.RandomVariableInterface;
 import net.finmath.time.TimeDiscretizationInterface;
@@ -91,4 +93,25 @@ public class LIBORVolatilityModelTimeHomogenousPiecewiseConstant extends LIBORVo
 				this.volatility.clone()
 				);
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LIBORVolatilityModelTimeHomogenousPiecewiseConstant other = (LIBORVolatilityModelTimeHomogenousPiecewiseConstant) obj;
+        if (!Objects.equals(this.timeToMaturityDiscretization, other.timeToMaturityDiscretization)) {
+            return false;
+        }
+        if (!Arrays.equals(this.volatility, other.volatility)) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -2,6 +2,7 @@ package net.finmath.time.businessdaycalendar;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -63,4 +64,28 @@ public abstract class BusinessdayCalendarExcludingGivenHolidays extends Business
 	public String toString() {
 		return getClass().getSimpleName() + " [baseCalendar=" + getBaseCalendar() + "]";
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final BusinessdayCalendarExcludingGivenHolidays other = (BusinessdayCalendarExcludingGivenHolidays) obj;
+        if (this.isExcludeWeekends != other.isExcludeWeekends) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.baseCalendar, other.baseCalendar)) {
+            return false;
+        }
+        return true;
+    }
 }

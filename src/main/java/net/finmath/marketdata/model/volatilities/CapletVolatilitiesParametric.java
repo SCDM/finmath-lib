@@ -7,6 +7,7 @@
 package net.finmath.marketdata.model.volatilities;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import net.finmath.marketdata.model.AnalyticModelInterface;
 import net.finmath.marketdata.model.curves.DiscountCurveInterface;
@@ -183,4 +184,30 @@ public class CapletVolatilitiesParametric extends AbstractVolatilitySurfaceParam
 		return new CapletVolatilitiesParametric(getName(), getReferenceDate(), forwardCurve, discountCurve, value[0], value[1], value[2], value[3], timeScaling, quotingConvention);
 	}
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CapletVolatilitiesParametric other = (CapletVolatilitiesParametric) obj;
+        if (Double.doubleToLongBits(this.timeScaling) != Double.doubleToLongBits(other.timeScaling)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.a) != Double.doubleToLongBits(other.a)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.b) != Double.doubleToLongBits(other.b)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.c) != Double.doubleToLongBits(other.c)) {
+            return false;
+        }
+        return Objects.equals(this.d, other.d);
+    }
 }

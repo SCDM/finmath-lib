@@ -145,4 +145,19 @@ public abstract class BusinessdayCalendar implements BusinessdayCalendarInterfac
 	public String toString() {
 		return "BusinessdayCalendar";
 	}
+        
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final BusinessdayCalendar other = (BusinessdayCalendar) obj;
+        return true;
+    }
 }

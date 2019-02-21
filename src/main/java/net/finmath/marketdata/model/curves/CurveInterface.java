@@ -76,5 +76,8 @@ public interface CurveInterface extends ParameterObjectInterface, Serializable, 
 	CurveBuilderInterface getCloneBuilder() throws CloneNotSupportedException;
 
 	@Override
-    CurveInterface getCloneForParameter(double[] value) throws CloneNotSupportedException;
+        CurveInterface getCloneForParameter(double[] value) throws CloneNotSupportedException;
+        
+        @Override
+        boolean equals(Object obj);
 }

@@ -5,6 +5,7 @@
  */
 package net.finmath.montecarlo.interestrate.modelplugins;
 
+import java.util.Arrays;
 import net.finmath.functions.LinearAlgebra;
 import net.finmath.time.TimeDiscretizationInterface;
 
@@ -133,4 +134,29 @@ public class LIBORCorrelationModelExponentialDecay extends LIBORCorrelationModel
 
 		return parameter;
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LIBORCorrelationModelExponentialDecay other = (LIBORCorrelationModelExponentialDecay) obj;
+        if (this.numberOfFactors != other.numberOfFactors) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.a) != Double.doubleToLongBits(other.a)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.correlationMatrix, other.correlationMatrix)) {
+            return false;
+        }
+        return Arrays.deepEquals(this.factorMatrix, other.factorMatrix);
+    }
+
 }

@@ -31,4 +31,7 @@ public interface TermStructureTenorTimeScalingInterface {
 	 * @return A clone of this object.
 	 */
 	TermStructureTenorTimeScalingInterface clone();
+        
+        @Override
+        boolean equals(Object obj);
 }

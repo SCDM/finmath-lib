@@ -1,6 +1,7 @@
 package net.finmath.time.businessdaycalendar;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -30,4 +31,22 @@ public abstract class BusinessdayCalendarExcludingGivenSetOfHolidays extends Bus
 	 * @return A set of (additional) holidays.
 	 */
 	public Set<LocalDate> getHolidays() { return holidays; }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final BusinessdayCalendarExcludingGivenSetOfHolidays other = (BusinessdayCalendarExcludingGivenSetOfHolidays) obj;
+        if (!Objects.equals(this.holidays, other.holidays)) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -39,4 +39,7 @@ public interface AbstractSwaptionMarketData {
 	 * @return The implied volatility.
 	 */
     double getVolatility(double optionMaturity, double tenorLength, double periodLength, double strike);
+    
+    @Override
+    boolean equals(Object obj);
 }

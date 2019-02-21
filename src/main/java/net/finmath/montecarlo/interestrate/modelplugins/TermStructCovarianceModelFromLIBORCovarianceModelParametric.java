@@ -6,6 +6,7 @@
 
 package net.finmath.montecarlo.interestrate.modelplugins;
 
+import java.util.Objects;
 import net.finmath.montecarlo.interestrate.TermStructureModelInterface;
 import net.finmath.stochastic.RandomVariableInterface;
 import net.finmath.time.TimeDiscretizationInterface;
@@ -110,4 +111,25 @@ public class TermStructCovarianceModelFromLIBORCovarianceModelParametric extends
 	public TermStructureCovarianceModelParametric clone() {
 		return new TermStructCovarianceModelFromLIBORCovarianceModelParametric(tenorTimeScalingModel.clone(), (AbstractLIBORCovarianceModelParametric) covarianceModel.clone());
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TermStructCovarianceModelFromLIBORCovarianceModelParametric other = (TermStructCovarianceModelFromLIBORCovarianceModelParametric) obj;
+        if (!Objects.equals(this.tenorTimeScalingModel, other.tenorTimeScalingModel)) {
+            return false;
+        }
+        if (!Objects.equals(this.covarianceModel, other.covarianceModel)) {
+            return false;
+        }
+        return true;
+    }
 }

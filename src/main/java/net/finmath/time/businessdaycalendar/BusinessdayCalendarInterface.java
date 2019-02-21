@@ -140,4 +140,7 @@ public interface BusinessdayCalendarInterface extends Serializable {
 	 * @return A date corresponding the date adding the offset to the start date.
 	 */
 	LocalDate createDateFromDateAndOffsetCode(LocalDate baseDate, String dateOffsetCode);
+        
+        @Override
+        boolean equals(Object obj);
 }

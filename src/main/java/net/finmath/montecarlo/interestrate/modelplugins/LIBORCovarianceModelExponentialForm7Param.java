@@ -5,6 +5,8 @@
  */
 package net.finmath.montecarlo.interestrate.modelplugins;
 
+import java.util.Arrays;
+import java.util.Objects;
 import net.finmath.montecarlo.RandomVariable;
 import net.finmath.stochastic.RandomVariableInterface;
 import net.finmath.time.TimeDiscretizationInterface;
@@ -79,4 +81,27 @@ public class LIBORCovarianceModelExponentialForm7Param extends AbstractLIBORCova
 		throw new UnsupportedOperationException();
 	}
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LIBORCovarianceModelExponentialForm7Param other = (LIBORCovarianceModelExponentialForm7Param) obj;
+        if (!Arrays.equals(this.parameter, other.parameter)) {
+            return false;
+        }
+        if (!Objects.equals(this.volatilityModel, other.volatilityModel)) {
+            return false;
+        }
+        if (!Objects.equals(this.correlationModel, other.correlationModel)) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -7,6 +7,7 @@ package net.finmath.marketdata.model.curves;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * Abstract base class for a curve. It stores the name of the curve and
@@ -78,4 +79,22 @@ public abstract class AbstractCurve implements CurveInterface, Serializable, Clo
 	public String toString() {
 		return "AbstractCurve [name=" + name + ", referenceDate=" + referenceDate + "]";
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final AbstractCurve other = (AbstractCurve) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        return Objects.equals(this.referenceDate, other.referenceDate);
+    }
 }

@@ -81,4 +81,22 @@ public class DayCountConvention_30E_360 implements DayCountConventionInterface {
 	public double getDaycountFraction(LocalDate startDate, LocalDate endDate) {
 		return getDaycount(startDate, endDate) / 360.0;
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DayCountConvention_30E_360 other = (DayCountConvention_30E_360) obj;
+        if (this.is30Eplus360 != other.is30Eplus360) {
+            return false;
+        }
+        return true;
+    }
 }

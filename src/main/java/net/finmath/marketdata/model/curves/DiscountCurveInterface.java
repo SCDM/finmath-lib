@@ -33,4 +33,6 @@ public interface DiscountCurveInterface extends CurveInterface {
 	 */
     double getDiscountFactor(AnalyticModelInterface model, double maturity);
 
+    @Override
+    boolean equals(Object obj);
 }

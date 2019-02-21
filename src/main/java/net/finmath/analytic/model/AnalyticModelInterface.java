@@ -102,4 +102,7 @@ public interface AnalyticModelInterface extends Model, Cloneable {
 	AnalyticModelInterface clone();
 
 	AnalyticModelInterface getCloneForParameter(Map<ParameterObjectInterface, RandomVariableInterface[]> curvesParameterPairs) throws CloneNotSupportedException;
+
+        @Override
+        boolean equals(Object obj);
 }

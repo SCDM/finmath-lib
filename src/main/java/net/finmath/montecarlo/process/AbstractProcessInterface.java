@@ -80,4 +80,7 @@ public interface AbstractProcessInterface extends ProcessInterface {
 	 * @return Clone of the process
 	 */
 	AbstractProcessInterface clone();
+        
+        @Override
+        boolean equals(Object other);
 }

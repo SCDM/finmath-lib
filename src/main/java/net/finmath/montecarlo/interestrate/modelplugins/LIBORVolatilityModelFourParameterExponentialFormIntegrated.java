@@ -5,6 +5,7 @@
  */
 package net.finmath.montecarlo.interestrate.modelplugins;
 
+import java.util.Objects;
 import net.finmath.marketdata.model.volatilities.CapletVolatilitiesParametric;
 import net.finmath.marketdata.model.volatilities.VolatilitySurfaceInterface.QuotingConvention;
 import net.finmath.montecarlo.RandomVariable;
@@ -133,4 +134,31 @@ public class LIBORVolatilityModelFourParameterExponentialFormIntegrated extends 
 				isCalibrateable
 				);
 	}
+        
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LIBORVolatilityModelFourParameterExponentialFormIntegrated other = (LIBORVolatilityModelFourParameterExponentialFormIntegrated) obj;
+        if (Double.doubleToLongBits(this.a) != Double.doubleToLongBits(other.a)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.b) != Double.doubleToLongBits(other.b)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.c) != Double.doubleToLongBits(other.c)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.d) != Double.doubleToLongBits(other.d)) {
+            return false;
+        }
+        return Objects.equals(this.cap, other.cap);
+    }
 }

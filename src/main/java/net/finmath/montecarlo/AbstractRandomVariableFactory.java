@@ -24,4 +24,7 @@ public abstract class AbstractRandomVariableFactory implements Serializable{
     public abstract RandomVariableInterface createRandomVariable(double time, double value);
 
     public abstract RandomVariableInterface createRandomVariable(double time, double[] values);
+    
+    @Override
+    public abstract boolean equals(Object obj);
 }

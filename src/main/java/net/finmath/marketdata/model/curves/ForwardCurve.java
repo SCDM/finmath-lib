@@ -400,4 +400,22 @@ public class ForwardCurve extends AbstractForwardCurve implements Serializable {
 	public String toString() {
 		return "ForwardCurve [" + super.toString() + ", interpolationEntityForward=" + interpolationEntityForward + "]";
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ForwardCurve other = (ForwardCurve) obj;
+        if (this.interpolationEntityForward != other.interpolationEntityForward) {
+            return false;
+        }
+        return true;
+    }
 }

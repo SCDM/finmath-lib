@@ -6,6 +6,8 @@
 package net.finmath.montecarlo.interestrate.modelplugins;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 
 import net.finmath.montecarlo.AbstractRandomVariableFactory;
 import net.finmath.montecarlo.RandomVariableFactory;
@@ -165,4 +167,34 @@ public class LIBORVolatilityModelFromGivenMatrix extends LIBORVolatilityModel {
 				getLiborPeriodDiscretization(),
 				newVolatilityArray);
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LIBORVolatilityModelFromGivenMatrix other = (LIBORVolatilityModelFromGivenMatrix) obj;
+        if (this.isCalibrateable != other.isCalibrateable) {
+            return false;
+        }
+        if (!Objects.equals(this.randomVariableFactory, other.randomVariableFactory)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.volatilityMatrix, other.volatilityMatrix)) {
+            return false;
+        }
+        if (!Arrays.equals(this.parameter, other.parameter)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.volatility, other.volatility)) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -7,6 +7,7 @@
 package net.finmath.time.daycount;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * Implements a placeholder object for an unknown day count convention, throwing an exception,
@@ -46,4 +47,22 @@ public class DayCountConvention_UNKNOWN implements DayCountConventionInterface {
 	public double getDaycountFraction(LocalDate startDate, LocalDate endDate) {
 		throw new IllegalArgumentException(errorMessage);
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DayCountConvention_UNKNOWN other = (DayCountConvention_UNKNOWN) obj;
+        if (!Objects.equals(this.errorMessage, other.errorMessage)) {
+            return false;
+        }
+        return true;
+    }
 }

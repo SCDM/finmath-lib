@@ -52,4 +52,19 @@ public class BusinessdayCalendarExcludingLONHolidays extends BusinessdayCalendar
 	}
 
 	public Set<LocalDate> getHolidays() { return holidays; }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final BusinessdayCalendarExcludingLONHolidays other = (BusinessdayCalendarExcludingLONHolidays) obj;
+        return true;
+    }
 }

@@ -8,6 +8,7 @@ package net.finmath.interpolation;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.function.DoubleUnaryOperator;
 
 import net.finmath.functions.LinearAlgebra;
@@ -131,6 +132,27 @@ public class RationalFunctionInterpolation implements DoubleUnaryOperator, Seria
 
 			return valueNumerator/valueDenominator;
 		}
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) {
+                return true;
+            }
+            if (obj == null) {
+                return false;
+            }
+            if (getClass() != obj.getClass()) {
+                return false;
+            }
+            final RationalFunction other = (RationalFunction) obj;
+            if (!Arrays.equals(this.coefficientsNumerator, other.coefficientsNumerator)) {
+                return false;
+            }
+            if (!Arrays.equals(this.coefficientsDenominator, other.coefficientsDenominator)) {
+                return false;
+            }
+            return true;
+        }
 	}
 	
 	// The interpolated curve - a rational function for each interval (one less than number of points)
@@ -585,4 +607,34 @@ public class RationalFunctionInterpolation implements DoubleUnaryOperator, Seria
 		// initialization of transients
 		interpolatingRationalFunctionsLazyInitLock = new Object();
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final RationalFunctionInterpolation other = (RationalFunctionInterpolation) obj;
+        if (!Arrays.equals(this.points, other.points)) {
+            return false;
+        }
+        if (!Arrays.equals(this.values, other.values)) {
+            return false;
+        }
+        if (this.interpolationMethod != other.interpolationMethod) {
+            return false;
+        }
+        if (this.extrapolationMethod != other.extrapolationMethod) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.interpolatingRationalFunctions, other.interpolatingRationalFunctions)) {
+            return false;
+        }
+        return true;
+    }
 }

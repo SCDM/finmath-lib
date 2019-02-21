@@ -5,6 +5,7 @@
  */
 package net.finmath.montecarlo.interestrate.modelplugins;
 
+import java.util.Objects;
 import net.finmath.stochastic.RandomVariableInterface;
 
 /**
@@ -98,4 +99,25 @@ public class HullWhiteLocalVolatilityModel extends AbstractLIBORCovarianceModelP
 	public RandomVariableInterface getFactorLoadingPseudoInverse(int timeIndex, int component, int factor, RandomVariableInterface[] realizationAtTimeIndex) {
 		throw new UnsupportedOperationException();
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final HullWhiteLocalVolatilityModel other = (HullWhiteLocalVolatilityModel) obj;
+        if (Double.doubleToLongBits(this.periodLength) != Double.doubleToLongBits(other.periodLength)) {
+            return false;
+        }
+        if (!Objects.equals(this.covarianceModel, other.covarianceModel)) {
+            return false;
+        }
+        return true;
+    }
 }

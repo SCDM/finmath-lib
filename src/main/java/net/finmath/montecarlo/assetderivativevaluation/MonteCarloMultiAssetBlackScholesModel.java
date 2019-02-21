@@ -259,4 +259,37 @@ public class MonteCarloMultiAssetBlackScholesModel extends AbstractModel impleme
 		// TODO Auto-generated method stub
 		return null;
 	}
+        
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MonteCarloMultiAssetBlackScholesModel other = (MonteCarloMultiAssetBlackScholesModel) obj;
+        if (Double.doubleToLongBits(this.riskFreeRate) != Double.doubleToLongBits(other.riskFreeRate)) {
+            return false;
+        }
+        if (!Arrays.equals(this.initialValues, other.initialValues)) {
+            return false;
+        }
+        if (!Arrays.equals(this.volatilities, other.volatilities)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.factorLoadings, other.factorLoadings)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.initialStates, other.initialStates)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.drift, other.drift)) {
+            return false;
+        }
+        return Arrays.deepEquals(this.factorLoadingOnPaths, other.factorLoadingOnPaths);
+    }
 }

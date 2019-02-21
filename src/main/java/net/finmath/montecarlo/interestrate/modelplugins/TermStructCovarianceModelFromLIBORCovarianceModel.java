@@ -6,6 +6,7 @@
 
 package net.finmath.montecarlo.interestrate.modelplugins;
 
+import java.util.Objects;
 import net.finmath.montecarlo.interestrate.LIBORMarketModelWithTenorRefinement;
 import net.finmath.montecarlo.interestrate.TermStructureModelInterface;
 import net.finmath.stochastic.RandomVariableInterface;
@@ -72,4 +73,22 @@ public class TermStructCovarianceModelFromLIBORCovarianceModel implements TermSt
 	public int getNumberOfFactors() {
 		return covarianceModel.getNumberOfFactors();
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TermStructCovarianceModelFromLIBORCovarianceModel other = (TermStructCovarianceModelFromLIBORCovarianceModel) obj;
+        if (!Objects.equals(this.covarianceModel, other.covarianceModel)) {
+            return false;
+        }
+        return true;
+    }
 }

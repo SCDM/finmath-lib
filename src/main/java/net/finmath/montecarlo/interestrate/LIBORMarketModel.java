@@ -6,8 +6,10 @@
 package net.finmath.montecarlo.interestrate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 import net.finmath.exception.CalculationException;
@@ -1183,6 +1185,63 @@ public class LIBORMarketModel extends AbstractModel implements LIBORMarketModelI
 				+ ", driftApproximationMethod=" + driftApproximationMethod
 				+ ", measure=" + measure + ", stateSpace=" + stateSpace + "]";
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LIBORMarketModel other = (LIBORMarketModel) obj;
+        if (Double.doubleToLongBits(this.liborCap) != Double.doubleToLongBits(other.liborCap)) {
+            return false;
+        }
+        if (!Objects.equals(this.forwardCurveName, other.forwardCurveName)) {
+            return false;
+        }
+        if (!Objects.equals(this.liborPeriodDiscretization, other.liborPeriodDiscretization)) {
+            return false;
+        }
+        if (!Objects.equals(this.curveModel, other.curveModel)) {
+            return false;
+        }
+        if (!Objects.equals(this.forwardRateCurve, other.forwardRateCurve)) {
+            return false;
+        }
+        if (!Objects.equals(this.discountCurve, other.discountCurve)) {
+            return false;
+        }
+        if (!Objects.equals(this.randomVariableFactory, other.randomVariableFactory)) {
+            return false;
+        }
+        if (!Objects.equals(this.covarianceModel, other.covarianceModel)) {
+            return false;
+        }
+        if (!Objects.equals(this.swaptionMarketData, other.swaptionMarketData)) {
+            return false;
+        }
+        if (this.driftApproximationMethod != other.driftApproximationMethod) {
+            return false;
+        }
+        if (this.measure != other.measure) {
+            return false;
+        }
+        if (this.stateSpace != other.stateSpace) {
+            return false;
+        }
+        return Arrays.deepEquals(this.integratedLIBORCovariance, other.integratedLIBORCovariance);
+        /*    return false;
+        }
+        if (!Objects.equals(this.numeraires, other.numeraires)) {
+            return false;
+        }
+        return Objects.equals(this.numerairesProcess, other.numerairesProcess);*/
+    }
 }
 
 

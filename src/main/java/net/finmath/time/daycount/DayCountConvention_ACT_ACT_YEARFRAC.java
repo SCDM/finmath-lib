@@ -124,4 +124,18 @@ public class DayCountConvention_ACT_ACT_YEARFRAC extends DayCountConvention_ACT 
 		return "DayCountConvention_ACT_ACT_YEARFRAC";
 	}
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DayCountConvention_ACT_ACT_YEARFRAC other = (DayCountConvention_ACT_ACT_YEARFRAC) obj;
+        return true;
+    }
 }

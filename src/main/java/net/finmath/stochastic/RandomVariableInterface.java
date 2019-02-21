@@ -593,4 +593,7 @@ public interface RandomVariableInterface extends Serializable {
 	 * @return A random variable which is 1.0 for all states that are NaN, otherwise 0.0.
 	 */
 	RandomVariableInterface isNaN();
+        
+        @Override
+        boolean equals(Object obj);
 }

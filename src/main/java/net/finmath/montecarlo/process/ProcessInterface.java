@@ -74,5 +74,8 @@ public interface ProcessInterface {
 	 * @return Clone of the process
 	 */
     ProcessInterface clone();
+    
+    @Override
+    boolean equals(Object other);
 
 }

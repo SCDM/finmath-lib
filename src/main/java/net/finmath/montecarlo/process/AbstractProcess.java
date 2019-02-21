@@ -5,6 +5,7 @@
  */
 package net.finmath.montecarlo.process;
 
+import java.util.Objects;
 import net.finmath.montecarlo.model.AbstractModelInterface;
 import net.finmath.stochastic.RandomVariableInterface;
 import net.finmath.time.TimeDiscretizationInterface;
@@ -96,4 +97,25 @@ public abstract class AbstractProcess implements AbstractProcessInterface, Clone
 
 	@Override
     public abstract AbstractProcess clone();
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final AbstractProcess other = (AbstractProcess) obj;
+        if (!Objects.equals(this.model, other.model)) {
+            return false;
+        }
+        if (!Objects.equals(this.timeDiscretization, other.timeDiscretization)) {
+            return false;
+        }
+        return true;
+    }
 }

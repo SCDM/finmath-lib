@@ -6,6 +6,7 @@
 package net.finmath.montecarlo.interestrate.modelplugins;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 import net.finmath.stochastic.RandomVariableInterface;
 import net.finmath.time.TimeDiscretizationInterface;
@@ -155,4 +156,22 @@ public class LIBORCovarianceModelFromVolatilityAndCorrelation extends AbstractLI
 	public LIBORCorrelationModel getCorrelationModel() {
 		return correlationModel;
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LIBORCovarianceModelFromVolatilityAndCorrelation other = (LIBORCovarianceModelFromVolatilityAndCorrelation) obj;
+        if (!Objects.equals(this.volatilityModel, other.volatilityModel)) {
+            return false;
+        }
+        return Objects.equals(this.correlationModel, other.correlationModel);
+    }
 }

@@ -123,4 +123,31 @@ public class LIBORVolatilityModelMaturityDependentFourParameterExponentialForm e
 				d
 				);
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LIBORVolatilityModelMaturityDependentFourParameterExponentialForm other = (LIBORVolatilityModelMaturityDependentFourParameterExponentialForm) obj;
+        if (!Arrays.equals(this.a, other.a)) {
+            return false;
+        }
+        if (!Arrays.equals(this.b, other.b)) {
+            return false;
+        }
+        if (!Arrays.equals(this.c, other.c)) {
+            return false;
+        }
+        if (!Arrays.equals(this.d, other.d)) {
+            return false;
+        }
+        return true;
+    }
 }

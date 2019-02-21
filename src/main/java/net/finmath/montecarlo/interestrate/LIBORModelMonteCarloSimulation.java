@@ -7,6 +7,7 @@ package net.finmath.montecarlo.interestrate;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import net.finmath.exception.CalculationException;
 import net.finmath.montecarlo.BrownianMotionInterface;
@@ -190,4 +191,22 @@ public class LIBORModelMonteCarloSimulation implements LIBORModelMonteCarloSimul
 		dataModifiedMap.put(entityKey, dataModified);
 		return getCloneWithModifiedData(dataModifiedMap);
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LIBORModelMonteCarloSimulation other = (LIBORModelMonteCarloSimulation) obj;
+        if (!Objects.equals(this.model, other.model)) {
+            return false;
+        }
+        return true;
+    }
 }

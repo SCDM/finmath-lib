@@ -59,4 +59,7 @@ public interface LIBORModelInterface extends TermStructureModelInterface {
 	 */
 	@Override
 	LIBORModelInterface getCloneWithModifiedData(Map<String, Object> dataModified) throws CalculationException;
+        
+        @Override
+        boolean equals(Object obj);
 }

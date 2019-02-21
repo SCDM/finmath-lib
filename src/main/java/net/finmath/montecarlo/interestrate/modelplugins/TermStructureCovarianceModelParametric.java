@@ -209,4 +209,19 @@ public abstract class TermStructureCovarianceModelParametric implements TermStru
 
 		return calibrationCovarianceModel;    	
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TermStructureCovarianceModelParametric other = (TermStructureCovarianceModelParametric) obj;
+        return true;
+    }
 }

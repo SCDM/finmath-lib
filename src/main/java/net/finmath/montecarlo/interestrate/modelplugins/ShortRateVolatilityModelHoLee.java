@@ -6,6 +6,7 @@
 
 package net.finmath.montecarlo.interestrate.modelplugins;
 
+import java.util.Objects;
 import net.finmath.time.TimeDiscretization;
 import net.finmath.time.TimeDiscretizationInterface;
 
@@ -37,4 +38,25 @@ public class ShortRateVolatilityModelHoLee implements ShortRateVolailityModelInt
 	public double getMeanReversion(int timeIndex) {
 		return 0.0;
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ShortRateVolatilityModelHoLee other = (ShortRateVolatilityModelHoLee) obj;
+        if (Double.doubleToLongBits(this.volatility) != Double.doubleToLongBits(other.volatility)) {
+            return false;
+        }
+        if (!Objects.equals(this.timeDiscretization, other.timeDiscretization)) {
+            return false;
+        }
+        return true;
+    }
 }

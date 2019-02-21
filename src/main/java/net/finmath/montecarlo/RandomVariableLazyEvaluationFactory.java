@@ -22,4 +22,19 @@ public class RandomVariableLazyEvaluationFactory extends AbstractRandomVariableF
     public RandomVariableInterface createRandomVariable(double time, double[] values) {
         return new RandomVariableLazyEvaluation(time, values);
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final RandomVariableLazyEvaluationFactory other = (RandomVariableLazyEvaluationFactory) obj;
+        return true;
+    }
 }

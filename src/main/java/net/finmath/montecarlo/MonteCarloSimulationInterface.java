@@ -85,4 +85,7 @@ public interface MonteCarloSimulationInterface {
 	 * @throws net.finmath.exception.CalculationException Thrown if the valuation fails, specific cause may be available via the <code>cause()</code> method.
 	 */
 	MonteCarloSimulationInterface getCloneWithModifiedData(Map<String, Object> dataModified) throws CalculationException;
+        
+        @Override
+        boolean equals(Object obj);
 }

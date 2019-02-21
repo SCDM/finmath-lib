@@ -8,6 +8,7 @@ package net.finmath.montecarlo.interestrate.modelplugins;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 import net.finmath.montecarlo.AbstractRandomVariableFactory;
@@ -193,4 +194,40 @@ public class LIBORVolatilityModelPiecewiseConstant extends LIBORVolatilityModel 
 				this.isCalibrateable
 				);
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LIBORVolatilityModelPiecewiseConstant other = (LIBORVolatilityModelPiecewiseConstant) obj;
+        if (this.isCalibrateable != other.isCalibrateable) {
+            return false;
+        }
+        if (!Objects.equals(this.randomVariableFactory, other.randomVariableFactory)) {
+            return false;
+        }
+        if (!Objects.equals(this.simulationTimeDiscretization, other.simulationTimeDiscretization)) {
+            return false;
+        }
+        if (!Objects.equals(this.timeToMaturityDiscretization, other.timeToMaturityDiscretization)) {
+            return false;
+        }
+        if (!Objects.equals(this.indexMap, other.indexMap)) {
+            return false;
+        }
+        if (!Arrays.equals(this.volatility, other.volatility)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.volatilityRandomVariables, other.volatilityRandomVariables)) {
+            return false;
+        }
+        return true;
+    }
 }

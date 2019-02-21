@@ -8,6 +8,7 @@ package net.finmath.marketdata.model.curves;
 import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 import net.finmath.marketdata.model.AnalyticModelInterface;
 import net.finmath.time.FloatingpointDate;
@@ -99,4 +100,34 @@ public class DiscountCurveRenormalized implements DiscountCurveInterface, Serial
 		// initialization of transients
 		this.spotOffset = FloatingpointDate.getFloatingPointDateFromDate(referenceDate, spotDate);
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DiscountCurveRenormalized other = (DiscountCurveRenormalized) obj;
+        if (Double.doubleToLongBits(this.spotOffset) != Double.doubleToLongBits(other.spotOffset)) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.baseCurveName, other.baseCurveName)) {
+            return false;
+        }
+        if (!Objects.equals(this.referenceDate, other.referenceDate)) {
+            return false;
+        }
+        if (!Objects.equals(this.spotDate, other.spotDate)) {
+            return false;
+        }
+        return true;
+    }
 }

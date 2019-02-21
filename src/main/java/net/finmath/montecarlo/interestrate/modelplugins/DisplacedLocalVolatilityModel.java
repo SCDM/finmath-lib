@@ -5,6 +5,7 @@
  */
 package net.finmath.montecarlo.interestrate.modelplugins;
 
+import java.util.Objects;
 import net.finmath.marketdata.model.curves.ForwardCurveInterface;
 import net.finmath.stochastic.RandomVariableInterface;
 
@@ -142,4 +143,25 @@ public class DisplacedLocalVolatilityModel extends AbstractLIBORCovarianceModelP
 	public RandomVariableInterface getFactorLoadingPseudoInverse(int timeIndex, int component, int factor, RandomVariableInterface[] realizationAtTimeIndex) {
 		throw new UnsupportedOperationException();
 	}
+        
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DisplacedLocalVolatilityModel other = (DisplacedLocalVolatilityModel) obj;
+        if (Double.doubleToLongBits(this.displacement) != Double.doubleToLongBits(other.displacement)) {
+            return false;
+        }
+        if (!Objects.equals(this.covarianceModel, other.covarianceModel)) {
+            return false;
+        }
+        return Objects.equals(this.forwardCurve, other.forwardCurve);
+    }
 }

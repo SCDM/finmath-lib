@@ -7,6 +7,7 @@
 package net.finmath.time.businessdaycalendar;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * A business day calendar, where every day is a business day, expect
@@ -90,4 +91,25 @@ public class BusinessdayCalendarExcludingTARGETHolidays extends BusinessdayCalen
 	public String toString() {
 		return "BusinessdayCalendarExcludingTARGETHolidays [baseCalendar=" + baseCalendar + "]";
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final BusinessdayCalendarExcludingTARGETHolidays other = (BusinessdayCalendarExcludingTARGETHolidays) obj;
+        if (!Objects.equals(this.baseCalendar, other.baseCalendar)) {
+            return false;
+        }
+        if (!Objects.equals(this.weekdayCalendar, other.weekdayCalendar)) {
+            return false;
+        }
+        return true;
+    }
 }

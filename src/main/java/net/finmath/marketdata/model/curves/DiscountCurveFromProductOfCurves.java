@@ -7,6 +7,7 @@ package net.finmath.marketdata.model.curves;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Arrays;
 
 import net.finmath.marketdata.model.AnalyticModelInterface;
 
@@ -73,4 +74,22 @@ public class DiscountCurveFromProductOfCurves extends AbstractCurve implements S
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DiscountCurveFromProductOfCurves other = (DiscountCurveFromProductOfCurves) obj;
+        if (!Arrays.deepEquals(this.curves, other.curves)) {
+            return false;
+        }
+        return true;
+    }
 }

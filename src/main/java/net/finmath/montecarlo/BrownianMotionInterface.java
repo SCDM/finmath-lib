@@ -89,4 +89,7 @@ public interface BrownianMotionInterface extends IndependentIncrementsInterface 
 	 * @return New object implementing BrownianMotionInterface.
 	 */
 	BrownianMotionInterface getCloneWithModifiedTimeDiscretization(TimeDiscretizationInterface newTimeDiscretization);
+        
+        @Override
+        boolean equals(Object obj);
 }

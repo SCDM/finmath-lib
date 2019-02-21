@@ -5,6 +5,7 @@
  */
 package net.finmath.montecarlo.interestrate.modelplugins;
 
+import java.util.Objects;
 import net.finmath.marketdata.model.curves.ForwardCurveInterface;
 import net.finmath.montecarlo.AbstractRandomVariableFactory;
 import net.finmath.montecarlo.RandomVariableFactory;
@@ -216,4 +217,34 @@ public class BlendedLocalVolatilityModel extends AbstractLIBORCovarianceModelPar
 	public RandomVariableInterface getFactorLoadingPseudoInverse(int timeIndex, int component, int factor, RandomVariableInterface[] realizationAtTimeIndex) {
 		throw new UnsupportedOperationException();
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final BlendedLocalVolatilityModel other = (BlendedLocalVolatilityModel) obj;
+        if (this.isCalibrateable != other.isCalibrateable) {
+            return false;
+        }
+        if (!Objects.equals(this.randomVariableFactory, other.randomVariableFactory)) {
+            return false;
+        }
+        if (!Objects.equals(this.covarianceModel, other.covarianceModel)) {
+            return false;
+        }
+        if (!Objects.equals(this.displacement, other.displacement)) {
+            return false;
+        }
+        if (!Objects.equals(this.forwardCurve, other.forwardCurve)) {
+            return false;
+        }
+        return true;
+    }
 }

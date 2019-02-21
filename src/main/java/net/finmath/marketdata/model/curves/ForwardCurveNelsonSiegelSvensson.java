@@ -7,6 +7,7 @@ package net.finmath.marketdata.model.curves;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 import javax.naming.OperationNotSupportedException;
 
@@ -170,4 +171,34 @@ public class ForwardCurveNelsonSiegelSvensson extends AbstractCurve implements S
 	private LocalDate getDateFromModelTime(double fixingTime) {
 		return getReferenceDate().plusDays((int)Math.round(fixingTime*365.0));
 	}
+        
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ForwardCurveNelsonSiegelSvensson other = (ForwardCurveNelsonSiegelSvensson) obj;
+        if (Double.doubleToLongBits(this.periodOffset) != Double.doubleToLongBits(other.periodOffset)) {
+            return false;
+        }
+        if (!Objects.equals(this.paymentOffsetCode, other.paymentOffsetCode)) {
+            return false;
+        }
+        if (!Objects.equals(this.paymentBusinessdayCalendar, other.paymentBusinessdayCalendar)) {
+            return false;
+        }
+        if (this.paymentDateRollConvention != other.paymentDateRollConvention) {
+            return false;
+        }
+        if (!Objects.equals(this.daycountConvention, other.daycountConvention)) {
+            return false;
+        }
+        return this.discountCurve.equals(other.discountCurve);
+    }
 }

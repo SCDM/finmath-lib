@@ -7,6 +7,7 @@ package net.finmath.marketdata.model.curves;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 import net.finmath.marketdata.model.AnalyticModelInterface;
 import net.finmath.time.businessdaycalendar.BusinessdayCalendarExcludingWeekends;
@@ -174,4 +175,28 @@ public class ForwardCurveFromDiscountCurve extends AbstractForwardCurve implemen
 	public String toString() {
 		return "ForwardCurveFromDiscountCurve [" + super.toString() + ", referenceDiscountCurveForForwardsName=" + referenceDiscountCurveForForwardsName + ", daycountScaling=" + daycountScaling + ", periodOffset=" + periodOffset + "]";
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ForwardCurveFromDiscountCurve other = (ForwardCurveFromDiscountCurve) obj;
+        if (Double.doubleToLongBits(this.daycountScaling) != Double.doubleToLongBits(other.daycountScaling)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.periodOffset) != Double.doubleToLongBits(other.periodOffset)) {
+            return false;
+        }
+        if (!Objects.equals(this.referenceDiscountCurveForForwardsName, other.referenceDiscountCurveForForwardsName)) {
+            return false;
+        }
+        return true;
+    }
 }

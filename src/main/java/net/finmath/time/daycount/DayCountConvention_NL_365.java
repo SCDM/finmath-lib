@@ -60,4 +60,19 @@ public class DayCountConvention_NL_365 implements DayCountConventionInterface {
 
 		return daycountFraction;
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DayCountConvention_NL_365 other = (DayCountConvention_NL_365) obj;
+        return true;
+    }
 }

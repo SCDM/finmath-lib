@@ -7,6 +7,7 @@
 package net.finmath.marketdata.model.curves;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import net.finmath.marketdata.model.AnalyticModelInterface;
 
@@ -158,4 +159,28 @@ public class PiecewiseCurve extends AbstractCurve implements CurveInterface {
 				+ ", getFixedPartEndTime()=" + getFixedPartEndTime()
 				+ ", toString()=" + super.toString() + "]";
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PiecewiseCurve other = (PiecewiseCurve) obj;
+        if (Double.doubleToLongBits(this.fixedPartStartTime) != Double.doubleToLongBits(other.fixedPartStartTime)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.fixedPartEndTime) != Double.doubleToLongBits(other.fixedPartEndTime)) {
+            return false;
+        }
+        if (!Objects.equals(this.baseCurve, other.baseCurve)) {
+            return false;
+        }
+        return Objects.equals(this.fixedPartCurve, other.fixedPartCurve);
+    }
 }

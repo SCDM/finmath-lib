@@ -40,4 +40,7 @@ public interface ShortRateVolailityModelInterface {
 	 * @return the value of \( a(t) \) for \( t_{i} \leq t &lt; t_{i+1} \)
 	 */
 	double getMeanReversion(int timeIndex);
+        
+        @Override
+        boolean equals(Object obj);
 }

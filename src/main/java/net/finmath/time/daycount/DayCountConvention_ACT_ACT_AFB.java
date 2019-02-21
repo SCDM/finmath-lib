@@ -101,4 +101,18 @@ public class DayCountConvention_ACT_ACT_AFB extends DayCountConvention_ACT {
 		return "DayCountConvention_ACT_ACT_AFB";
 	}
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DayCountConvention_ACT_ACT_AFB other = (DayCountConvention_ACT_ACT_AFB) obj;
+        return true;
+    }
 }

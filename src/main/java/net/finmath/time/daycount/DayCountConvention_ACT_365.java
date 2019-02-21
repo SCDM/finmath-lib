@@ -46,4 +46,19 @@ public class DayCountConvention_ACT_365 extends DayCountConvention_ACT {
 
 		return daycountFraction;
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DayCountConvention_ACT_365 other = (DayCountConvention_ACT_365) obj;
+        return true;
+    }
 }

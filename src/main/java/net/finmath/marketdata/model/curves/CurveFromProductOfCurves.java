@@ -7,6 +7,7 @@ package net.finmath.marketdata.model.curves;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Arrays;
 
 import net.finmath.marketdata.model.AnalyticModelInterface;
 
@@ -57,4 +58,19 @@ public class CurveFromProductOfCurves extends AbstractCurve implements Serializa
 	public CurveBuilderInterface getCloneBuilder() throws CloneNotSupportedException {
 		throw new CloneNotSupportedException("Cloning is unsupported for this curve.");
 	}
+        
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CurveFromProductOfCurves other = (CurveFromProductOfCurves) obj;
+        return Arrays.deepEquals(this.curves, other.curves);
+    }
 }

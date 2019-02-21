@@ -6,6 +6,8 @@
 
 package net.finmath.montecarlo.interestrate.modelplugins;
 
+import java.util.Arrays;
+import java.util.Objects;
 import net.finmath.time.TimeDiscretizationInterface;
 
 /**
@@ -65,4 +67,34 @@ public class TermStructureTenorTimeScalingPicewiseConstant implements TermStruct
 	public TermStructureTenorTimeScalingInterface clone() {
 		return this;
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TermStructureTenorTimeScalingPicewiseConstant other = (TermStructureTenorTimeScalingPicewiseConstant) obj;
+        if (Double.doubleToLongBits(this.floor) != Double.doubleToLongBits(other.floor)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.cap) != Double.doubleToLongBits(other.cap)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.parameterScaling) != Double.doubleToLongBits(other.parameterScaling)) {
+            return false;
+        }
+        if (!Objects.equals(this.timeDiscretization, other.timeDiscretization)) {
+            return false;
+        }
+        if (!Arrays.equals(this.timesIntegrated, other.timesIntegrated)) {
+            return false;
+        }
+        return true;
+    }
 }

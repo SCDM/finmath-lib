@@ -77,4 +77,7 @@ public interface CurveInterface extends ParameterObjectInterface, Cloneable {
 
 	@Override
 	CurveInterface getCloneForParameter(RandomVariableInterface[] value) throws CloneNotSupportedException;
+        
+        @Override
+        boolean equals(Object obj);
 }

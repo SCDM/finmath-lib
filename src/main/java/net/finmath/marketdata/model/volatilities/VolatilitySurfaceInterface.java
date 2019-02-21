@@ -72,4 +72,7 @@ public interface VolatilitySurfaceInterface {
 	 * @return the quotingConvention
 	 */
 	QuotingConvention getQuotingConvention();
+        
+        @Override
+        boolean equals(Object obj);
 }

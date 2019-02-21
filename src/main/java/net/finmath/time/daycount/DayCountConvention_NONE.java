@@ -35,4 +35,19 @@ public class DayCountConvention_NONE implements DayCountConventionInterface {
 	public double getDaycountFraction(LocalDate startDate, LocalDate endDate) {
 		return 1.0;
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DayCountConvention_NONE other = (DayCountConvention_NONE) obj;
+        return true;
+    }
 }

@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import net.finmath.marketdata.model.AnalyticModelInterface;
 import net.finmath.marketdata.model.curves.Curve.ExtrapolationMethod;
@@ -208,4 +209,22 @@ public class SeasonalCurve extends AbstractCurve implements CurveInterface {
 
 		return seasonalAdjustments;
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SeasonalCurve other = (SeasonalCurve) obj;
+        if (!Objects.equals(this.baseCurve, other.baseCurve)) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -12,4 +12,6 @@ package net.finmath.montecarlo.interestrate.modelplugins;
  * @author Christian Fries
  */
 public interface TermStructureCovarianceModelInterface extends TermStructureTenorTimeScalingInterface, TermStructureFactorLoadingsModelInterface {
+    @Override
+    boolean equals(Object obj);
 }

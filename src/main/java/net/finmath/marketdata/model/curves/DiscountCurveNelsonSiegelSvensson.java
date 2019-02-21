@@ -172,4 +172,25 @@ public class DiscountCurveNelsonSiegelSvensson extends AbstractCurve implements 
 				+ ", parameter=" + Arrays.toString(parameter) + ", toString()="
 				+ super.toString() + "]";
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DiscountCurveNelsonSiegelSvensson other = (DiscountCurveNelsonSiegelSvensson) obj;
+        if (Double.doubleToLongBits(this.timeScaling) != Double.doubleToLongBits(other.timeScaling)) {
+            return false;
+        }
+        if (!Arrays.equals(this.parameter, other.parameter)) {
+            return false;
+        }
+        return true;
+    }
 }

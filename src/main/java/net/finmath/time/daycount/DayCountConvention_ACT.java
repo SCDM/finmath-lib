@@ -51,4 +51,19 @@ public abstract class DayCountConvention_ACT implements DayCountConventionInterf
 	public static double daysBetween(LocalDate startDate, LocalDate endDate) {
 		return (endDate.toEpochDay() - startDate.toEpochDay()); 
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DayCountConvention_ACT other = (DayCountConvention_ACT) obj;
+        return true;
+    }
 }

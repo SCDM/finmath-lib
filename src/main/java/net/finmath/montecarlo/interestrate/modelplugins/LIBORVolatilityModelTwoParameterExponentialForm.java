@@ -107,4 +107,28 @@ public class LIBORVolatilityModelTwoParameterExponentialForm extends LIBORVolati
 				isCalibrateable
 				);
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LIBORVolatilityModelTwoParameterExponentialForm other = (LIBORVolatilityModelTwoParameterExponentialForm) obj;
+        if (Double.doubleToLongBits(this.a) != Double.doubleToLongBits(other.a)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.b) != Double.doubleToLongBits(other.b)) {
+            return false;
+        }
+        if (this.isCalibrateable != other.isCalibrateable) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -7,6 +7,7 @@
 package net.finmath.marketdata.model.volatilities;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import net.finmath.functions.AnalyticFormulas;
 import net.finmath.marketdata.model.AnalyticModelInterface;
@@ -167,5 +168,38 @@ public class CapletVolatilitiesParametricDisplacedFourParameterAnalytic extends 
 			return new CapletVolatilitiesParametricDisplacedFourParameterAnalytic(getName(), getReferenceDate(), forwardCurve, discountCurve, displacement, isDisplacementCalibrateable, value[0], value[1], value[2], value[3], timeScaling);
 		}
 	}
+        
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CapletVolatilitiesParametricDisplacedFourParameterAnalytic other = (CapletVolatilitiesParametricDisplacedFourParameterAnalytic) obj;
+        if (Double.doubleToLongBits(this.timeScaling) != Double.doubleToLongBits(other.timeScaling)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.a) != Double.doubleToLongBits(other.a)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.b) != Double.doubleToLongBits(other.b)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.c) != Double.doubleToLongBits(other.c)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.d) != Double.doubleToLongBits(other.d)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.displacement) != Double.doubleToLongBits(other.displacement)) {
+            return false;
+        }
+        return true;
+    }
 }

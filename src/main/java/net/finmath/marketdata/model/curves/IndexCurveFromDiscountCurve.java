@@ -6,6 +6,7 @@
 
 package net.finmath.marketdata.model.curves;
 
+import java.util.Objects;
 import net.finmath.marketdata.model.AnalyticModelInterface;
 
 /**
@@ -51,4 +52,25 @@ public class IndexCurveFromDiscountCurve extends AbstractCurve implements CurveI
 	public CurveBuilderInterface getCloneBuilder() throws CloneNotSupportedException {
 		throw new CloneNotSupportedException();
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final IndexCurveFromDiscountCurve other = (IndexCurveFromDiscountCurve) obj;
+        if (Double.doubleToLongBits(this.indexValue) != Double.doubleToLongBits(other.indexValue)) {
+            return false;
+        }
+        if (!Objects.equals(this.discountCurve, other.discountCurve)) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -49,4 +49,6 @@ public interface TermStructureFactorLoadingsModelInterface {
 	 * @return the numberOfFactors
 	 */
     int getNumberOfFactors();
+    
+    boolean equals(Object obj);
 }

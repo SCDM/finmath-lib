@@ -8,6 +8,7 @@ package net.finmath.time.businessdaycalendar;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * A business day calendar, where every day is a business day, expect SATURDAY and SUNDAY.
@@ -51,4 +52,22 @@ public class BusinessdayCalendarExcludingWeekends extends BusinessdayCalendar {
 	public String toString() {
 		return "BusinessdayCalendarExcludingWeekends [baseCalendar=" + baseCalendar + "]";
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final BusinessdayCalendarExcludingWeekends other = (BusinessdayCalendarExcludingWeekends) obj;
+        if (!Objects.equals(this.baseCalendar, other.baseCalendar)) {
+            return false;
+        }
+        return true;
+    }
 }

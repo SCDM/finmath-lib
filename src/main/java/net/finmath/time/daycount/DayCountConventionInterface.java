@@ -40,5 +40,7 @@ public interface DayCountConventionInterface {
 	 * @return The daycount fraction corresponding to the given period.
 	 */
     double getDaycountFraction(LocalDate startDate, LocalDate endDate);
-	
+    
+    @Override
+    boolean equals(Object obj);
 }

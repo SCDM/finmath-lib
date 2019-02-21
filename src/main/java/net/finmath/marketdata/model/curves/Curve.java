@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 import net.finmath.interpolation.RationalFunctionInterpolation;
@@ -135,6 +136,30 @@ public class Curve extends AbstractCurve implements Serializable, Cloneable {
 		public Object clone() {
 			return new Point(time,value,isParameter);
 		}
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) {
+                return true;
+            }
+            if (obj == null) {
+                return false;
+            }
+            if (getClass() != obj.getClass()) {
+                return false;
+            }
+            final Point other = (Point) obj;
+            if (Double.doubleToLongBits(this.time) != Double.doubleToLongBits(other.time)) {
+                return false;
+            }
+            if (Double.doubleToLongBits(this.value) != Double.doubleToLongBits(other.value)) {
+                return false;
+            }
+            if (this.isParameter != other.isParameter) {
+                return false;
+            }
+            return true;
+        }
 	}
 
 	/**
@@ -511,4 +536,34 @@ public class Curve extends AbstractCurve implements Serializable, Cloneable {
 		// initialization of transients
 		rationalFunctionInterpolationLazyInitLock = new Object();
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Curve other = (Curve) obj;
+        if (!Objects.equals(this.points, other.points)) {
+            return false;
+        }
+        if (!Objects.equals(this.pointsBeingParameters, other.pointsBeingParameters)) {
+            return false;
+        }
+        if (this.interpolationMethod != other.interpolationMethod) {
+            return false;
+        }
+        if (this.interpolationEntity != other.interpolationEntity) {
+            return false;
+        }
+        if (!Objects.equals(this.rationalFunctionInterpolation, other.rationalFunctionInterpolation)) {
+            return false;
+        }
+        return true;
+    }
 }

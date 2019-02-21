@@ -6,6 +6,7 @@
 package net.finmath.montecarlo.interestrate.modelplugins;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import net.finmath.time.TimeDiscretizationInterface;
 
@@ -56,4 +57,7 @@ public abstract class LIBORCorrelationModel implements Serializable {
 
 	@Override
     public abstract Object clone();
+
+    @Override
+    public abstract boolean equals(Object obj);
 }

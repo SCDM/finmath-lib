@@ -100,4 +100,21 @@ public class DayCountConvention_ACT_ACT_ISDA extends DayCountConvention_ACT {
 				+ isCountLastDayNotFirst + "]";
 	}
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DayCountConvention_ACT_ACT_ISDA other = (DayCountConvention_ACT_ACT_ISDA) obj;
+        if (this.isCountLastDayNotFirst != other.isCountLastDayNotFirst) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -438,4 +438,19 @@ public class DiscountCurve extends Curve implements Serializable, DiscountCurveI
 	public String toString() {
 		return "DiscountCurve [" + super.toString() + "]";
 	}
+        
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DiscountCurve other = (DiscountCurve) obj;
+        return true;
+    }
 }

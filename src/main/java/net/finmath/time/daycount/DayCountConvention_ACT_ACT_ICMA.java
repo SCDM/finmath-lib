@@ -9,6 +9,7 @@ package net.finmath.time.daycount;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 import net.finmath.time.Period;
 
@@ -89,4 +90,25 @@ public class DayCountConvention_ACT_ACT_ICMA extends DayCountConvention_ACT {
 
 		return periodFraction / frequency;
 	}
+        
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DayCountConvention_ACT_ACT_ICMA other = (DayCountConvention_ACT_ACT_ICMA) obj;
+        if (this.frequency != other.frequency) {
+            return false;
+        }
+        if (!Objects.equals(this.periods, other.periods)) {
+            return false;
+        }
+        return true;
+    }
 }

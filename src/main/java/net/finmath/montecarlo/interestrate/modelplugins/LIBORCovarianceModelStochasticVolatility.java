@@ -7,6 +7,7 @@
 package net.finmath.montecarlo.interestrate.modelplugins;
 
 import java.util.Map;
+import java.util.Objects;
 
 import net.finmath.exception.CalculationException;
 import net.finmath.montecarlo.BrownianMotionInterface;
@@ -226,4 +227,37 @@ public class LIBORCovarianceModelStochasticVolatility extends AbstractLIBORCovar
 	public RandomVariableInterface getFactorLoadingPseudoInverse(int timeIndex, int component, int factor, RandomVariableInterface[] realizationAtTimeIndex) {
 		return null;
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final LIBORCovarianceModelStochasticVolatility other = (LIBORCovarianceModelStochasticVolatility) obj;
+        if (Double.doubleToLongBits(this.rho) != Double.doubleToLongBits(other.rho)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.nu) != Double.doubleToLongBits(other.nu)) {
+            return false;
+        }
+        if (this.isCalibrateable != other.isCalibrateable) {
+            return false;
+        }
+        if (!Objects.equals(this.covarianceModel, other.covarianceModel)) {
+            return false;
+        }
+        if (!Objects.equals(this.brownianMotion, other.brownianMotion)) {
+            return false;
+        }
+        if (!Objects.equals(this.stochasticVolatilityScalings, other.stochasticVolatilityScalings)) {
+            return false;
+        }
+        return true;
+    }
 }

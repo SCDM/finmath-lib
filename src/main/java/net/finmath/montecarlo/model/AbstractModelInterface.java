@@ -173,4 +173,7 @@ public interface AbstractModelInterface {
 	 * @throws CalculationException Thrown when the model could not be created.
 	 */
 	AbstractModelInterface getCloneWithModifiedData(Map<String, Object> dataModified) throws CalculationException;
+        
+        @Override
+        boolean equals(Object obj);
 }

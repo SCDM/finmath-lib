@@ -240,4 +240,7 @@ public abstract class AbstractLIBORCovarianceModelParametric extends AbstractLIB
 		return "AbstractLIBORCovarianceModelParametric [getParameter()="
 				+ Arrays.toString(getParameter()) + "]";
 	}
+        
+        @Override
+        public abstract boolean equals(Object obj);
 }

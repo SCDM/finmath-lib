@@ -42,4 +42,19 @@ public class RandomVariableFactory extends AbstractRandomVariableFactory {
 		if(isUseDoublePrecisionFloatingPointImplementation) return new RandomVariable(time, values);
 		else												return new RandomVariableLowMemory(time, values);
 	}
+        
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final RandomVariableFactory other = (RandomVariableFactory) obj;
+        return this.isUseDoublePrecisionFloatingPointImplementation == other.isUseDoublePrecisionFloatingPointImplementation;
+    }
 }

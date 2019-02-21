@@ -1110,4 +1110,28 @@ public class RandomVariable implements RandomVariableInterface {
 				+ "\n" + "realizations: " +
 				(isDeterministic() ? valueIfNonStochastic : Arrays.toString(realizations));
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final RandomVariable other = (RandomVariable) obj;
+        if (Double.doubleToLongBits(this.time) != Double.doubleToLongBits(other.time)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.valueIfNonStochastic) != Double.doubleToLongBits(other.valueIfNonStochastic)) {
+            return false;
+        }
+        if (!Arrays.equals(this.realizations, other.realizations)) {
+            return false;
+        }
+        return true;
+    }
 }

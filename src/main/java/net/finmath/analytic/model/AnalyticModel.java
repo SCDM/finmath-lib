@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
 import net.finmath.analytic.calibration.ParameterObjectInterface;
@@ -235,4 +236,28 @@ public class AnalyticModel implements AnalyticModelInterface, Serializable, Clon
 	public String toString() {
 		return "AnalyticModel: curves=" + curvesMap.keySet();
 	}
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final AnalyticModel other = (AnalyticModel) obj;
+        if (!Objects.equals(this.randomVariableFactory, other.randomVariableFactory)) {
+            return false;
+        }
+        if (!Objects.equals(this.curvesMap, other.curvesMap)) {
+            return false;
+        }
+        if (!Objects.equals(this.volatilitySurfaceMap, other.volatilitySurfaceMap)) {
+            return false;
+        }
+        return Objects.equals(this.volatilitySurfaceMap, other.volatilitySurfaceMap);
+    }
 }

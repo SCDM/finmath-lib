@@ -176,4 +176,7 @@ public abstract class AbstractLIBORCovarianceModel implements Serializable {
 	public int getNumberOfFactors() {
 		return numberOfFactors;
 	}
+        
+        @Override
+        public abstract boolean equals(Object obj);
 }

@@ -90,4 +90,7 @@ public interface TimeDiscretizationInterface extends Iterable<Double> {
      * @return A new time discretization where all time points have been shifted by the given time shift.
      */
     TimeDiscretizationInterface getTimeShiftedTimeDiscretization(double timeShift);
+    
+    @Override
+    boolean equals(Object obj);
 }

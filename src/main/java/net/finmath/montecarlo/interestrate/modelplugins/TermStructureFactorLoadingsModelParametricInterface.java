@@ -29,4 +29,7 @@ public interface TermStructureFactorLoadingsModelParametricInterface extends Ter
 	 * @return An instance of AbstractLIBORCovarianceModelParametric with modified parameters.
 	 */
     TermStructureCovarianceModelParametric getCloneWithModifiedParameters(double[] parameters);
+    
+    @Override
+    boolean equals(Object obj);
 }
