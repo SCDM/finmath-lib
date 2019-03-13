@@ -109,7 +109,13 @@ public class SwapLeg extends AbstractAnalyticProduct implements AnalyticProductI
 			}
 
 			// note that notional=1 if discountCurveForNotionalReset=discountCurve
-			double notional = discountCurveForNotionalReset.getDiscountFactor(model,periodStart) / discountCurve.getDiscountFactor(model,periodStart);
+                        double notional;
+                        
+                        if (discountCurveForNotionalReset.equals(discountCurve)) {
+                            notional = 1;
+                        } else {
+                            notional = discountCurveForNotionalReset.getDiscountFactor(model,periodStart) / discountCurve.getDiscountFactor(model,periodStart);
+                        }
 			double discountFactor = paymentDate > evaluationTime ? discountCurve.getDiscountFactor(model, paymentDate) : 0.0;
 			value += notional * forward * periodLength * discountFactor;
 

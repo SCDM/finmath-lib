@@ -9,6 +9,7 @@ import net.finmath.analytic.model.AnalyticModelInterface;
 import net.finmath.analytic.model.curves.DiscountCurveInterface;
 import net.finmath.analytic.model.curves.ForwardCurveInterface;
 import net.finmath.stochastic.RandomVariableInterface;
+import net.finmath.stochastic.Scalar;
 import net.finmath.time.ScheduleInterface;
 
 /**
@@ -108,9 +109,15 @@ public class SwapLeg extends AbstractAnalyticProduct implements AnalyticProductI
 			if(forwardCurve != null) {
 				forward = forward.add(forwardCurve.getForward(model, fixingDate, paymentDate-fixingDate));
 			}
-
+                        
+                        RandomVariableInterface notional;
 			// note that notional=1 if discountCurveForNotionalReset=discountCurve
-			RandomVariableInterface notional = discountCurveForNotionalReset.getDiscountFactor(model,periodStart).div(discountCurve.getDiscountFactor(model,periodStart));
+                        if (discountCurveForNotionalReset.equals(discountCurve)) {
+                            notional = new Scalar(1d);
+                        }
+                        else {
+                            notional = discountCurveForNotionalReset.getDiscountFactor(model,periodStart).div(discountCurve.getDiscountFactor(model,periodStart));
+                        }
 			RandomVariableInterface discountFactor = paymentDate > evaluationTime ? discountCurve.getDiscountFactor(model, paymentDate) : model.getRandomVariableForConstant(0.0);
 			value = value.add(notional.mult(forward).mult(periodLength).mult(discountFactor));
 
