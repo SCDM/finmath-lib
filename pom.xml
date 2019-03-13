@@ -11,7 +11,7 @@
 
 	<groupId>net.finmath</groupId>
 	<artifactId>finmath-lib</artifactId>
-	<version>3.2.6.1</version>
+	<version>3.2.6-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>finmath lib</name>
@@ -94,12 +94,12 @@
 			<email>william1104@gmail.com</email>
 			<timezone>1</timezone>
 		</contributor>
-                <contributor>
+        <contributor>
 			<name>Martin Marquardt</name>
 			<email>mamarquardt@deloitte.de</email>
 			<timezone>1</timezone>
 		</contributor>
-                <contributor>
+        <contributor>
 			<name>Karl Hofmann</name>
 			<email>khofmann@deloitte.de</email>
 			<timezone>1</timezone>
