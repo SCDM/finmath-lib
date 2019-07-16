@@ -27,6 +27,7 @@ import net.finmath.time.daycount.DayCountConvention_30U_360;
 import net.finmath.time.daycount.DayCountConvention_ACT_360;
 import net.finmath.time.daycount.DayCountConvention_ACT_365;
 import net.finmath.time.daycount.DayCountConvention_ACT_ACT_ISDA;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Generates a schedule based on some meta data (frequency, maturity, date roll convention, etc.).
@@ -163,29 +164,7 @@ public class ScheduleGenerator {
 		 */
 		ArrayList<Period> periods = new ArrayList<Period>();
 
-		DayCountConventionInterface daycountConventionObject = null;
-		switch (daycountConvention) {
-		case E30_360_ISDA:
-			daycountConventionObject = new DayCountConvention_30E_360_ISDA();
-			break;
-		case E30_360:
-			daycountConventionObject = new DayCountConvention_30E_360();
-			break;
-		case U30_360:
-			daycountConventionObject = new DayCountConvention_30U_360();
-			break;
-		case ACT_360:
-			daycountConventionObject = new DayCountConvention_ACT_360();
-			break;
-		case ACT_365:
-			daycountConventionObject = new DayCountConvention_ACT_365();
-			break;
-		case ACT_ACT_ISDA:
-		case ACT_ACT:
-		default:
-			daycountConventionObject = new DayCountConvention_ACT_ACT_ISDA();
-			break;
-		}
+		DayCountConventionInterface daycountConventionObject = createDayCountConvention(daycountConvention);
 
 		int periodLengthDays	= 0;
 		int periodLengthWeeks	= 0;
@@ -325,6 +304,34 @@ public class ScheduleGenerator {
 		}
 
 		return new Schedule(referenceDate, periods, daycountConventionObject);
+	}
+
+	@NotNull
+	public static DayCountConventionInterface createDayCountConvention(DaycountConvention daycountConvention) {
+		DayCountConventionInterface daycountConventionObject = null;
+		switch (daycountConvention) {
+		case E30_360_ISDA:
+			daycountConventionObject = new DayCountConvention_30E_360_ISDA();
+			break;
+		case E30_360:
+			daycountConventionObject = new DayCountConvention_30E_360();
+			break;
+		case U30_360:
+			daycountConventionObject = new DayCountConvention_30U_360();
+			break;
+		case ACT_360:
+			daycountConventionObject = new DayCountConvention_ACT_360();
+			break;
+		case ACT_365:
+			daycountConventionObject = new DayCountConvention_ACT_365();
+			break;
+		case ACT_ACT_ISDA:
+		case ACT_ACT:
+		default:
+			daycountConventionObject = new DayCountConvention_ACT_ACT_ISDA();
+			break;
+		}
+		return daycountConventionObject;
 	}
 
 	/**
