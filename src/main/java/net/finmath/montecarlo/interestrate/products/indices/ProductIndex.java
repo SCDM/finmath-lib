@@ -51,4 +51,12 @@ public class ProductIndex extends AbstractIndex {
 		}
 		return underlyingNames;
 	}
+
+        public AbstractProductComponent getIndex1() {
+            return index1;
+        }
+
+        public AbstractProductComponent getIndex2() {
+            return index2;
+        }
 }
