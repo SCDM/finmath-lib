@@ -69,4 +69,16 @@ public class AccrualAccount extends AbstractProductComponent {
 
 		return value;
 	}
+
+	public AnalyticModelIndex getPastFixings() {
+		return pastFixings;
+	}
+
+	public AbstractIndex getAccrualIndex() {
+		return accrualIndex;
+	}
+
+	public double getAccrualPeriod() {
+		return accrualPeriod;
+	}
 }
